@@ -96,7 +96,7 @@ class MisophoniaModel(nn.Module):
         return torch.zeros(2, batch_size, 64)
 
     def predict(self, audio_file):
-        self.hidden = init_hidden()
+        self.hidden = self.init_hidden()
         waveform, sample_rate = torchaudio.load(audio_file)
         # Is audio silent?
         if waveform.var() < 1e-6:

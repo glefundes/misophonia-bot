@@ -29,6 +29,7 @@ def parse_audio(update, context):
         
         score = model.predict(audio_file)
         msg = build_message(score)       
+        logger.info('prediction successfull. message: '+msg)
         
         context.bot.send_message(chat_id=update.effective_chat.id, reply_to_message_id=update.message.message_id, text=msg)
     except StopIteration:
@@ -37,12 +38,10 @@ def parse_audio(update, context):
 def start(bot, update):
     update.effective_message.reply_text("Hi! I'm Misophonia bot. Send me an audio or voice message and I'll try to tell you if it's safe to listen. Add me to groups and I'll do the same for every audio and voice message :)")
 
-def error(bot, update, error):
-    logger.warning('Update "%s" caused error "%s"', update, error)
+def error(bot, update):
+    logger.warning('Update "%s" caused error "%s"', updates)
     
 if __name__ == "__main__":
-    # Set these variable to the appropriate values
-    TOKEN = "1282105586:AAFKV1hssrLR5JXmkImU4io6KvtzMiUhqb8"
     NAME = "misophonia-bot"
     MODEL_PATH = 'weights.pth'
     
@@ -57,7 +56,7 @@ if __name__ == "__main__":
 
     # Port is given by Heroku
     PORT = os.environ.get('PORT')
-
+    TOKEN = os.environ.get('TOKEN')
     # Enable logging
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                         level=logging.INFO)
