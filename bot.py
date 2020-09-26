@@ -39,7 +39,7 @@ def start(bot, update):
     update.effective_message.reply_text("Hi! I'm Misophonia bot. Send me an audio or voice message and I'll try to tell you if it's safe to listen. Add me to groups and I'll do the same for every audio and voice message :)")
 
 def error(bot, update):
-    logger.warning('Update "%s" caused error "%s"', updates)
+    logger.warning('Update "%s" caused error "%s"', update)
     
 if __name__ == "__main__":
     NAME = "misophonia-bot"
