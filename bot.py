@@ -5,7 +5,6 @@ import logging
 
 sys.path.append('../')
 from model import MisophoniaModel
-from utils import normalize_waveform
 
 import torch
 import torchaudio
@@ -22,32 +21,13 @@ def build_message(score):
     #     pred_class = 'noise' if int(round(score)) == 1 else 'clean'
     return messages[msg_index] + f'\n({score:.04f})' 
     
-def run_inference(model, audio_file):
-    waveform, sample_rate = torchaudio.load(audio_file)
-    # Is audio silent?
-    if waveform.var() < 1e-6:
-        return -1
-    # Normalize waveform
-    waveform = normalize_waveform(waveform).permute(1,0)
-    # Pad waveform if shortan than the minimum length acceptable for the model to handle
-    if waveform.shape[0] < model.min_len:
-        padded = torch.zeros(model.min_len, waveform.shape[1])
-        padded[:waveform.shape[0], :] = waveform            
-        waveform = padded
-    # Run inference
-    length = torch.tensor(waveform.shape[0])
-    with torch.no_grad():
-        pred = model(waveform.unsqueeze(0), length.unsqueeze(0))
-    pred = pred.squeeze().item()
-    return pred
-
 def parse_audio(update, context):
     try:
         audio_obj = [update.message.audio, update.message.voice]
         audio_obj = next(item for item in audio_obj if item is not None)
         audio_file = audio_obj.get_file().download('tmpfile.oga')  
         
-        score = run_inference(model, audio_file)
+        score = model.predict(audio_file)
         msg = build_message(score)       
         
         context.bot.send_message(chat_id=update.effective_chat.id, reply_to_message_id=update.message.message_id, text=msg)
@@ -63,7 +43,7 @@ def error(bot, update, error):
 if __name__ == "__main__":
     # Set these variable to the appropriate values
     TOKEN = "1282105586:AAFKV1hssrLR5JXmkImU4io6KvtzMiUhqb8"
-    NAME = "The name of your app on Heroku"
+    NAME = "misophonia-bot"
     MODEL_PATH = 'weights.pth'
     
     confidence_thresholds = [0, 0.2, 0.45, 0.6, 0.8, 1]
