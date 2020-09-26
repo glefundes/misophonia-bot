@@ -111,7 +111,7 @@ class MisophoniaModel(nn.Module):
         # Run inference
         length = torch.tensor(waveform.shape[0])
         with torch.no_grad():
-            pred = self.(waveform.unsqueeze(0), length.unsqueeze(0))
+            pred = self(waveform.unsqueeze(0), length.unsqueeze(0))
         pred = pred.squeeze().item()
         return pred
         

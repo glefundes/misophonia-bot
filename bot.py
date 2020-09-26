@@ -29,7 +29,7 @@ def parse_audio(update, context):
         
         score = model.predict(audio_file)
         msg = build_message(score)       
-        logger.info('prediction successfull. message: '+msg)
+        logger.info('prediction successfull. message: ['+msg+']')
         
         context.bot.send_message(chat_id=update.effective_chat.id, reply_to_message_id=update.message.message_id, text=msg)
     except StopIteration:
@@ -57,6 +57,7 @@ if __name__ == "__main__":
     # Port is given by Heroku
     PORT = os.environ.get('PORT')
     TOKEN = os.environ.get('TOKEN')
+
     # Enable logging
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                         level=logging.INFO)
