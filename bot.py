@@ -34,7 +34,7 @@ def parse_audio(update, context):
         os.remove(audio_file)
         context.bot.send_message(chat_id=update.effective_chat.id, reply_to_message_id=update.message.message_id, text=msg)
     except StopIteration:
-    	os.remove(audio_file)
+        os.remove(audio_file)
         context.bot.send_message(chat_id=update.effective_chat.id, text='No valid audio data could be retrieved :(')
 
 def start(bot, update):
