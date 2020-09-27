@@ -1,6 +1,5 @@
 [![Heroku][heroku-shield]][deployment-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <br />
 <p align="center">
@@ -90,9 +89,6 @@ Gabriel Lefundes Vieira - lefundes.gabriel@gmail.com
 
 [license-shield]: https://img.shields.io/github/license/glefundes/misophonia-bot.svg?style=flat-square
 [license-url]: https://github.com/glefundes/misophonia-bot/blob/master/LICENSE
-
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/glefundes/
 
 [heroku-shield]:https://img.shields.io/badge/Heroku-deployed-blueviolet?style=flat-square&logo=heroku
 [deployment-url]:https://github.com/glefundes/misophonia-bot/deployments
