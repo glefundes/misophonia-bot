@@ -25,21 +25,23 @@ def parse_audio(update, context):
     try:
         audio_obj = [update.message.audio, update.message.voice]
         audio_obj = next(item for item in audio_obj if item is not None)
-        audio_file = audio_obj.get_file().download('tmpfile.oga')  
+        audio_file = audio_obj.get_file().download()  
         
         score = model.predict(audio_file)
         msg = build_message(score)       
-        logger.info('prediction successfull. message: ['+msg+']')
+        logger.info('prediction successfull')
         
+        os.remove(audio_file)
         context.bot.send_message(chat_id=update.effective_chat.id, reply_to_message_id=update.message.message_id, text=msg)
     except StopIteration:
+    	os.remove(audio_file)
         context.bot.send_message(chat_id=update.effective_chat.id, text='No valid audio data could be retrieved :(')
 
 def start(bot, update):
     update.effective_message.reply_text("Hi! I'm Misophonia bot. Send me an audio or voice message and I'll try to tell you if it's safe to listen. Add me to groups and I'll do the same for every audio and voice message :)")
 
-def error(bot, update):
-    logger.warning('Update "%s" caused error "%s"', update)
+def error(bot, update, error):
+    logger.warning('Update "%s" caused error "%s"', update, error)
     
 if __name__ == "__main__":
     NAME = "misophonia-bot"
