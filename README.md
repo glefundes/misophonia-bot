@@ -5,7 +5,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/glefundes/misophonia-bot">
-    <img src="imgs/logo.png" alt="Logo" width="80" height="80">
+    <img src="imgs/logo.png" alt="Logo" height="100">
   </a>
 
   <h3 align="center">Misophonia Bot</h3>
@@ -58,7 +58,7 @@ Rest assured that no personal data is *ever* logged or stored by the bot.  You c
 
 <!-- GETTING STARTED -->
 ## Usage
-Record or forward a voice message to [Misophonia Bot](t.me/misophonia_bot) and you'll get your response. It's that simple! :)
+Record or forward a voice message to [Misophonia Bot](https://t.me/misophonia_bot) and you'll get your response. It's that simple! :)
 
 <!-- LICENSE -->
 ## License
@@ -87,10 +87,12 @@ Gabriel Lefundes Vieira - lefundes.gabriel@gmail.com
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=flat-squarehttps://img.shields.io/appveyor/build/glefundes/misophonia-botz
 [stars-url]: https://github.com/github_username/repo/stargazers
+
 [license-shield]: https://img.shields.io/github/license/glefundes/misophonia-bot.svg?style=flat-square
-[license-url]: https://github.com/glefundes/misophonia-bot/blob/master/LICENSE.txt
+[license-url]: https://github.com/glefundes/misophonia-bot/blob/master/LICENSE
+
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/glefundes/
-[product-screenshot]: images/screenshot.png
+
 [heroku-shield]:https://img.shields.io/badge/Heroku-deployed-blueviolet?style=flat-square&logo=heroku
 [deployment-url]:https://github.com/glefundes/misophonia-bot/deployments
